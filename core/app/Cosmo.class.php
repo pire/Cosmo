@@ -709,7 +709,7 @@ class Cosmo {
             // Make thumbnails
             $responsive = 'yes';
             foreach($this->thumbnailSizes as $size){
-                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 70))
+                if(!self::makeThumbnail($tempPath, "$dir/uploads/" . str_replace('&', '', $nameParts[0]) . "-$name-$size.$extension", $size, $size, 80))
                     $responsive = 'no';
             }
             

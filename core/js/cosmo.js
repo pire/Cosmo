@@ -2995,7 +2995,7 @@ angular.module('cosmo', [])
         
         // Check for duplicate URL
         if(duplicate && $scope.page.url === $location.path()){
-            $rootScope.$broadcast('notify', {message: 'Error: URL must be different to duplicate a page', classes: 'alert-error'});
+            $rootScope.$broadcast('notify', { message: 'Error: URL must be different to duplicate a page', classes: 'alert-error' });
             return;
         }
         
@@ -3096,7 +3096,7 @@ angular.module('cosmo', [])
                             // Stringify arrays and objects
                             if(typeof Page.extras[key] === 'object')
                                 Page.extras[key] = angular.toJson(Page.extras[key]);
-
+                            
                             // Save extra
                             REST.contentExtras.save({
                                 contentID: contentID,
@@ -3190,7 +3190,7 @@ angular.module('cosmo', [])
                                 // Stringify arrays and objects
                                 if(typeof Page.extras[key] === 'object')
                                     Page.extras[key] = angular.toJson(Page.extras[key]);
-
+                                
                                 // Save new extra
                                 REST.contentExtras.save({
                                     contentID: $scope.page.id,
