@@ -71,7 +71,8 @@ angular.module('cosmo', [])
         Page.publish = data.published;
         Page.scheduleDate = data.published_date;
         $scope.page.published_date = data.published_date * 1000; // Convert unix timestamp to milliseconds
-        Page.timestamp = data.timestamp;
+        Page.timestamp = data.timestamp * 1000;
+        $scope.page.timestamp = data.timestamp * 1000;
         if(data.extras)
             Page.extras = data.extras;
         else

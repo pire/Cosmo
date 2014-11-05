@@ -29,7 +29,7 @@ angular.module('pendant', [])
     });
 }])
 
-.directive('onePost', ['REST', 'Hooks', 'Responsive', function(REST, Hooks, Responsive){
+.directive('onePost', ['REST', 'Hooks', 'Responsive', 'Page', function(REST, Hooks, Responsive, Page){
     return {
         scope: {},
         templateUrl: 'themes/Pendant/partials/one.html',
@@ -39,6 +39,7 @@ angular.module('pendant', [])
             scope.limitNum = 10;
             scope.article = {};
             scope.article.tag = attrs.tag;
+            var firstRecord = true;
             
             // Get content
             REST.content.query({}, function(data){
@@ -49,7 +50,12 @@ angular.module('pendant', [])
                         data2.commentsNum = commentsData.length;
                     });
                 });
-                scope.posts = data;
+                
+                // Omit first result if this is the main home.html page
+                if(Page.type === 'home.html')
+                    scope.posts = data.slice(1);
+                else
+                    scope.posts = data;
             });
             
             // Watch for infinity scroll reaching the bottom
